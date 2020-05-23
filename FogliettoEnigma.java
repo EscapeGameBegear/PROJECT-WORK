@@ -1,14 +1,19 @@
-package EnigmaOrologio;
+package Room;
 
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
+import javax.swing.JTextField;
+import java.awt.Font;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class FogliettoEnigma {
 
 	private JFrame frame;
+	private JTextField textField;
 
 	/**
 	 * Launch the application.
@@ -42,15 +47,33 @@ public class FogliettoEnigma {
 		//frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
+		frame.setTitle("Che ore sono?");
 		
-		JLabel lblNewLabel_1 = new JLabel("New label");
-		lblNewLabel_1.setBounds(617, 461, 46, 14);
+		JLabel lblNewLabel = new JLabel("New label");
+		JLabel lblNewLabel_1 = new JLabel("penna");
+		
+		
+		lblNewLabel_1.setIcon(null);
+		lblNewLabel_1.setBounds(488, 463, 99, 47);
 		frame.getContentPane().add(lblNewLabel_1);
+		lblNewLabel_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				textField.setVisible(true);
+			}
+		});
 		
-		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon(FogliettoEnigma.class.getResource("/immagini/enigmaOra.jpg")));
-		lblNewLabel.setBounds(0, -20, 784, 561);
+		textField = new JTextField();
+		textField.setFont(new Font("Tekton Pro", Font.PLAIN, 24));
+		textField.setBounds(310, 225, 114, 47);
+		frame.getContentPane().add(textField);
+		textField.setColumns(10);
+		textField.setVisible(false);
+		
+		lblNewLabel.setIcon(new ImageIcon(FogliettoEnigma.class.getResource("/image/enigmaOra.jpg")));
+		lblNewLabel.setBounds(0, 0, 768, 534);
 		frame.getContentPane().add(lblNewLabel);
+		
 		
 		
 	}
